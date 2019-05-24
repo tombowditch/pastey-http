@@ -47,7 +47,7 @@ func main() {
 	r.GET("/", indexPage)
 	r.GET("/:identifier", getIdentifier)
 
-	if err := http.ListenAndServe("0.0.0.0:3333", r); err != nil {
+	if err := http.ListenAndServe("0.0.0.0:3334", r); err != nil {
 		logrus.Error(err.Error())
 		os.Exit(1)
 	}
