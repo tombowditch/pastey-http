@@ -11,7 +11,32 @@ import (
 
 func indexPage(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "text/plain")
-	w.Write([]byte(`bind.sh - commandline pastebin`))
+	w.Write([]byte(`bind.sh - commandline pastebin
+	
+	pipe to 'nc bind.sh 3333'
+
+	open ports: 1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 9999, 7070*
+
+	* long-term
+
+
+	- pastes are stored for 72 hours, after which they are automatically deleted
+	- for long-term pastes (1 week) please use port 7070
+	
+	example
+	=======
+
+	~> echo "hello" | nc bind.sh 9999
+	https://bind.sh/yourpaste
+
+	~> cat /etc/nginx/nginx.conf | nc bind.sh 3333
+	https://bind.sh/yourpaste
+
+	~> cat 100mb.bin | nc bind.sh 9999
+	too much data
+
+
+	`))
 }
 
 func getIdentifier(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
