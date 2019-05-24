@@ -21,7 +21,7 @@ func indexPage(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
 
 	- pastes are stored for 72 hours, after which they are automatically deleted
-	- for long-term pastes (1 week) please use port 7070
+	- for long-term pastes (1 week) please use port 7070 [coming soon] 
 	
 	example
 	=======
