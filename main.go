@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/go-redis/redis"
-	"github.com/joho/godotenv"
 	"github.com/julienschmidt/httprouter"
 	"github.com/sirupsen/logrus"
 )
@@ -35,11 +34,6 @@ func getIdentifier(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 var client *redis.Client
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		panic("Cannot load .env file, please make sure it is created.")
-	}
-
 	client = redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
 		Password: "",
@@ -53,7 +47,7 @@ func main() {
 	r.GET("/", indexPage)
 	r.GET("/:identifier", getIdentifier)
 
-	if err := http.ListenAndServe(os.Getenv("BIND_HOST")+":"+os.Getenv("BIND_PORT"), r); err != nil {
+	if err := http.ListenAndServe("0.0.0.0:3333", r); err != nil {
 		logrus.Error(err.Error())
 		os.Exit(1)
 	}
