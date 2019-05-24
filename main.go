@@ -35,7 +35,7 @@ var client *redis.Client
 
 func main() {
 	client = redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
+		Addr:     "pastey-redis:6379",
 		Password: "",
 		DB:       0,
 	})
