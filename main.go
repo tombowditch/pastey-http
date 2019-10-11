@@ -15,13 +15,10 @@ func indexPage(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	
 	pipe to 'nc bind.sh 3333'
 
-	open ports: 1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 9999, 7070*
-
-	* long-term
+	open ports: 1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 9999
 
 
 	- pastes are stored for 72 hours, after which they are automatically deleted
-	- for long-term pastes (1 week) please use port 7070 [coming soon] 
 	
 	example
 	=======
