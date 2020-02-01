@@ -11,25 +11,25 @@ import (
 
 func indexPage(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "text/plain")
-	w.Write([]byte(`bind.sh - commandline pastebin
+	w.Write([]byte(`ig.lc - commandline pastebin
 	
-	pipe to 'nc bind.sh 3333'
+	pipe to 'nc ig.lc 3333'
 
 	open ports: 1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 9999
 
-
 	- pastes are stored for 72 hours, after which they are automatically deleted
+	- you can use ig.lc or bind.sh, both domains are setup for the paste service
 	
 	example
 	=======
 
-	~> echo "hello" | nc bind.sh 9999
-	https://bind.sh/yourpaste
+	~> echo "hello" | nc ig.lc 9999
+	https://ig.lc/yourpaste
 
-	~> cat /etc/nginx/nginx.conf | nc bind.sh 3333
-	https://bind.sh/yourpaste
+	~> cat /etc/nginx/nginx.conf | nc ig.lc 3333
+	https://ig.lc/yourpaste
 
-	~> cat 100mb.bin | nc bind.sh 9999
+	~> cat 100mb.bin | nc ig.lc 9999
 	too much data
 
 
