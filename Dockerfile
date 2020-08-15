@@ -4,7 +4,7 @@ RUN apk update && apk add --no-cache git ca-certificates tzdata && update-ca-cer
 
 RUN adduser -D -g '' appuser
 
-WORKDIR $GOPATH/src/github.com/pastey-http
+WORKDIR $GOPATH/src
 COPY . .
 
 RUN go get -d -v

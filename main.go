@@ -15,10 +15,9 @@ func indexPage(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	
 	pipe to 'nc ig.lc 3333'
 
-	open ports: 1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 9999
+	open ports: 3333, 9999
 
 	- pastes are stored for 72 hours, after which they are automatically deleted
-	- you can use ig.lc or bind.sh, both domains are setup for the paste service
 	
 	example
 	=======
@@ -57,7 +56,7 @@ var client *redis.Client
 
 func main() {
 	client = redis.NewClient(&redis.Options{
-		Addr:     "pastey-redis:6379",
+		Addr:     os.Getenv("REDIS_URI"),
 		Password: "",
 		DB:       0,
 	})
