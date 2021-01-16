@@ -47,6 +47,7 @@ func getIdentifier(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 		w.Write([]byte(val))
 	} else {
 		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("not found or expired"))
 	}
 
