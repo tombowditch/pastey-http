@@ -12,31 +12,25 @@ import (
 func indexPage(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	w.Header().Set("Content-Type", "text/plain")
 	w.Write([]byte(`ig.lc - commandline pastebin
-	
-	pipe to 'nc ig.lc 3333'
 
-	open ports: 3333, 9999
+pipe to 'nc ig.lc 9999'
 
-	- pastes are stored for 72 hours, after which they are automatically deleted
-	
-	example
-	=======
+- pastes are stored for 72 hours, after which they are automatically deleted
 
-	~> echo "hello" | nc ig.lc 9999
-	https://ig.lc/yourpaste
+example
+=======
 
-	~> cat /etc/nginx/nginx.conf | nc ig.lc 3333
-	https://ig.lc/yourpaste
+~> echo "hello" | nc ig.lc 9999
+https://ig.lc/yourpaste
 
-	~> cat 100mb.bin | nc ig.lc 9999
-	too much data
+~> cat /etc/nginx/nginx.conf | nc ig.lc 9999
+https://ig.lc/yourpaste
 
-
-	`))
+~> cat 100mb.bin | nc ig.lc 9999
+too much data`))
 }
 
 func getIdentifier(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-
 	identifier := ps.ByName("identifier")
 
 	val, _ := client.Get("pastey_" + identifier).Result()
@@ -50,7 +44,6 @@ func getIdentifier(w http.ResponseWriter, r *http.Request, ps httprouter.Params)
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("not found or expired"))
 	}
-
 }
 
 var client *redis.Client
@@ -73,5 +66,4 @@ func main() {
 		logrus.Error(err.Error())
 		os.Exit(1)
 	}
-
 }
